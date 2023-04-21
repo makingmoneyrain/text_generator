@@ -39,62 +39,52 @@
     }
 
   </style>
-  <script>
-    function copyToClipboard() {
-  const outputElement = document.getElementById('output');
-  const textArea = document.createElement('textarea');
-  const articleType = document.getElementById('articletype');
-  const tone = document.getElementById('tone');
-  const pov = document.getElementById('pov');
-  const detail = document.getElementById('detail');
+<script>
+  document.getElementById('generateText').addEventListener('click', function () {
+    const wordCount = document.getElementById('wordcount').value;
+    const keywords = document.getElementById('keywords').value;
+    const source = document.getElementById('source').value;
 
-  textArea.value = outputElement.innerText;
-  document.body.appendChild(textArea);
-  textArea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textArea);
-} 
-    function generateText() {
-      const wordCount = document.getElementsByName('wordcount')[0].value;
-      const articleType = document.getElementsByName('articletype')[0].value;
-      const keywords = document.getElementsByName('keywords')[0].value;
-      const source = document.getElementsByName('source')[0].value;
-      const tone = document.getElementsByName('tone')[0].value;
-      const pov = document.getElementsByName('pov')[0].value;
-      const detail = document.getElementsByName('detail')[0].value;
-      const output = document.getElementById('output');
+    const articleType = document.getElementById('articletype').value;
+    const tone = document.getElementById('tone').value;
+    const pov = document.getElementById('pov').value;
+    const detail = document.getElementById('detail').value;
 
-      let result = '';
+    let result = '';
 
-      switch (articleType) {
-        case 'news':
-          result = `You are now JournalistGPT, you are a master news reporter.
-First, please read through the source article, which is ${source}, ignore ${source} if it's blank
-Then, please start writing a well organized structured article with proper h2, h3, and h4 titles that is about ${keywords}.  
-
-Please follow all the inputs below in order to generate this article, target word count should be at least ${wordCount} words, the tone of the article should be ${tone}, and the point of view should be ${pov}, and be sure to include as much details as possible, such as ${detail}`;
-        break;
-        case 'outline':
-         result = `Please write a concise outline about the ${keywords} topic, only write the outline right now do not write the article.  Outline should be well structured article with h2 h3 h4 titles, include as much details as possible, such as ${detail}.  Additional details and facts you can use will be in the ${source}, ignore ${source} if it's blank`; 
-        break;
-        case 'article':
-          result = `You are now SEOGPT, you are a master SEO writer that writes SEO articles that will rank #1 in Google for the topic about ${keywords}
-First, please read through the outline for this article, which is ${source}, ignore ${source} if it's blank
+    switch (articleType) {
+      case 'news':
+        result = `You are now JournalistGPT, you are a master news reporter.
+First, please read through the source article, which is ${source}
 Then, please start writing a well organized structured article with proper h2, h3, and h4 titles that is about ${keywords}.  
 
 Please follow all the inputs below in order to generate this article
 Word Count: target word count should be at least ${wordCount} words
+Article Type: ${articleType}
 Tone: ${tone}
 Point of View: ${pov}
-Details: be sure to include as much details as possible, such as ${detail}
-`;
-        default:
-          result = 'Please select an article type and fill in all fields';
-      }
-
-      output.innerText = result;
+Details: be sure to include as much details as possible, such as ${detail}`;
+        break;
+      case 'informational':
+        // ...
+        break;
+      case 'review':
+        // ...
+        break;
+      default:
+        result = 'Please select an article type and fill in all fields';
     }
-  </script>
+
+    document.getElementById('output').innerText = result;
+  });
+
+  document.getElementById('copyToClipboard').addEventListener('click', function () {
+    const output = document.getElementById('output');
+    output.select();
+    output.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand('copy');
+  });
+</script>
 </head>
 <body>
 <div class="container">
