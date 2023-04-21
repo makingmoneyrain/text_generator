@@ -43,6 +43,11 @@
     function copyToClipboard() {
   const outputElement = document.getElementById('output');
   const textArea = document.createElement('textarea');
+  const articleType = document.getElementById('articletype');
+  const tone = document.getElementById('tone');
+  const pov = document.getElementById('pov');
+  const detail = document.getElementById('detail');
+
   textArea.value = outputElement.innerText;
   document.body.appendChild(textArea);
   textArea.select();
@@ -64,12 +69,7 @@
 First, please read through the source article, which is ${source}, ignore ${source} if it's blank
 Then, please start writing a well organized structured article with proper h2, h3, and h4 titles that is about ${keywords}.  
 
-Please follow all the inputs below in order to generate this article
-Word Count: target word count should be at least ${wordCount} words
-Article Type: ${articletype}
-Tone: ${tone}
-Point of View: ${pov}
-Details: be sure to include as much details as possible, such as ${detail}`;
+Please follow all the inputs below in order to generate this article, target word count should be at least ${wordCount} words, the tone of the article should be ${tone}, and the point of view should be ${pov}, and be sure to include as much details as possible, such as ${detail}`;
         break;
         case 'outline':
          result = `Please write a concise outline about the ${keywords} topic, only write the outline right now do not write the article.  Outline should be well structured article with h2 h3 h4 titles, include as much details as possible, such as ${detail}.  Additional details and facts you can use will be in the ${source}, ignore ${source} if it's blank`; 
