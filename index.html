@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Generator</title>
+  <script>
+    function generateText() {
+      const selection = document.getElementById('dropdown').value;
+      const output = document.getElementById('output');
+      
+      switch (selection) {
+        case 'option1':
+          output.innerText = 'Text for option 1';
+          break;
+        case 'option2':
+          output.innerText = 'Text for option 2';
+          break;
+        case 'option3':
+          output.innerText = 'Text for option 3';
+          break;
+        default:
+          output.innerText = 'Please select an option';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Text Generator</h1>
+  <select id="dropdown">
+    <option value="">Select an option</option>
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+  </select>
+  <button onclick="generateText()">Generate Text</button>
+  <p id="output"></p>
+</body>
+</html>
