@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prompt Generator</title>
   <style>
+    .container {
+  margin-left: 50px;
+  margin-right: 50px;
+}
     body {
       background-color: #181818;
       color: #f0f0f0;
@@ -90,6 +94,7 @@ Details: be sure to include as much details as possible, such as ${detail}
   </script>
 </head>
 <body>
+<div class="container">
   <h1>Prompt Generator</h1>
   
   <label for="wordcount">Word Count:</label>
@@ -132,5 +137,6 @@ Details: be sure to include as much details as possible, such as ${detail}
   <p id="output"></p>
   <button onclick="copyToClipboard()">Copy to Clipboard</button>
 
+</div>
 </body>
 </html>
