@@ -64,12 +64,11 @@
       switch (articleType) {
         case 'news':
           result = `You are now JournalistGPT, you are a master news reporter.
-First, please read through the source article, which is ${source}, ignore ${source} if it's blank
+First, please read through the source article, which is ${source}. 
 Then, please start writing a well organized structured article with proper h2, h3, and h4 titles that is about ${keywords}.  
 
 Please follow all the inputs below in order to generate this article
 Word Count: target word count should be at least ${wordCount} words
-Article Type: ${articletype}
 Tone: ${tone}
 Point of View: ${pov}
 Details: be sure to include as much details as possible, such as ${detail}`;
