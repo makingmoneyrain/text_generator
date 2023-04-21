@@ -36,6 +36,15 @@
 
   </style>
   <script>
+    function copyToClipboard() {
+  const outputElement = document.getElementById('output');
+  const textArea = document.createElement('textarea');
+  textArea.value = outputElement.innerText;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textArea);
+} 
     function generateText() {
       const wordCount = document.getElementsByName('wordcount')[0].value;
       const articleType = document.getElementsByName('articletype')[0].value;
@@ -71,8 +80,8 @@
   
   <label for="articletype">Article Type:</label>
   <select name="articletype" id="articletype">
-    <option value="">Select an option</option>
-    <option value="news">News</option>
+    <option>Select an option</option>
+    <option value="news" selected>News</option>
     <option value="informational">Informational</option>
     <option value="review">Review</option>
   </select>
@@ -92,11 +101,11 @@
 <select name="pov" id="pov">
   <option value="First Person Singular">First Person Singular (I, me, my, mine)</option>
   <option value="First Person Plural">First Person Plural (we, us, our, ours)</option>
-  <option value="Second Person">Second Person (you, your, yours)</option>
+  <option value="Second Person" selected>Second Person (you, your, yours)</option>
   <option value="Third Person">Third Person (he, she, it, they)</option>
 </select>
   <label for="detail">Details:</label>
-<textarea name="detail" id="detail" rows="4" cols="50">names, places, dates, prices, numbers, custom</textarea>
+<textarea name="detail" id="detail" rows="4" cols="50">names, places, dates, prices, numbers</textarea>
 
  <label for="source">Supplemental Information:</label>
 
@@ -104,5 +113,7 @@
 <button onclick="generateText()">Generate Text</button>
 
   <p id="output"></p>
+  <button onclick="copyToClipboard()">Copy to Clipboard</button>
+
 </body>
 </html>
