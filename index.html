@@ -6,33 +6,52 @@
   <title>Prompt Generator</title>
   <script>
     function generateText() {
-      const selection = document.getElementById('dropdown').value;
+      const wordCount = document.getElementsByName('wordcount')[0].value;
+      const articleType = document.getElementsByName('articletype')[0].value;
+      const keywords = document.getElementsByName('keywords')[0].value;
+      const source = document.getElementsByName('source')[0].value;
       const output = document.getElementById('output');
-      
-      switch (selection) {
-        case 'option1':
-          output.innerText = 'Text for option 1';
+
+      let result = '';
+
+      switch (articleType) {
+        case 'news':
+          result = `Rewrite the following news articles in ${wordCount} words, that will pass plagiarism checks, that is well structured article with h2 h3 titles, on "${keywords}", include as much details as possible, such as names, dates, prices, numbers, places. Only need 3 or 4 H2 topics. This will be a short news story. All the details you need will be in the ${source}`;
           break;
-        case 'option2':
-          output.innerText = 'Text for option 2';
+        case 'informational':
+          result = `Write a concise outline (that we will next write ${wordCount} word article about the ${keywords} topic, but only write the outline right now do not write the article) that is well structured article with h2 h3 titles, include as much details as possible, such as names, dates, prices, numbers, places. Only need 3 or 4 H2 topics. This will be a short news story. All the details you need will be in the ${source}`;
           break;
-        case 'option3':
-          output.innerText = 'Text for option 3';
+        case 'review':
+          result = `Write a concise outline (that we will next write ${wordCount} word article about, but only write the outline right now) that is well structured article with h2 h3 titles, on "${keywords}". Include as much details as possible, such as names, dates, prices, numbers, places. Only need 3 or 4 H2 topics. This will be a short news story. All the details you need will be in the ${source}`;
           break;
         default:
-          output.innerText = 'Please select an option';
+          result = 'Please select an article type and fill in all fields';
       }
+
+      output.innerText = result;
     }
   </script>
 </head>
 <body>
   <h1>Prompt Generator</h1>
-  <select id="dropdown">
+  
+  <label for="wordcount">Word Count:</label>
+  <input type="number" name="wordcount" id="wordcount">
+  
+  <label for="articletype">Article Type:</label>
+  <select name="articletype" id="articletype">
     <option value="">Select an option</option>
-    <option value="option1">Option 1</option>
-    <option value="option2">Option 2</option>
-    <option value="option3">Option 3</option>
+    <option value="news">News</option>
+    <option value="informational">Informational</option>
+    <option value="review">Review</option>
   </select>
+  
+  <label for="keywords">Keywords:</label>
+  <input type="text" name="keywords" id="keywords">
+  
+  <label for="source">Supplemental Information:</label>
+  <textarea name="source" id="source" rows="4" cols="50"></textarea>
+
   <button onclick="generateText()">Generate Text</button>
   <p id="output"></p>
 </body>
