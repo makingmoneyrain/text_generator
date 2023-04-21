@@ -64,14 +64,15 @@
       switch (articleType) {
         case 'news':
           result = `You are now JournalistGPT, you are a master news reporter.
-First, please read through the source article, which is ${source}. 
+First, please read through the source article, which is at the very bottom of this prompt. 
 Then, please start writing a well organized structured article with proper h2, h3, and h4 titles that is about ${keywords}.  
 
 Please follow all the inputs below in order to generate this article
 Word Count: target word count should be at least ${wordCount} words
 Tone: ${tone}
 Point of View: ${pov}
-Details: be sure to include as much details as possible, such as ${detail}`;
+Details: be sure to include as much details as possible, such as ${detail}
+Here is the source of all the details about this story: ${source}`;
         break;
         case 'outline':
          result = `Please write a concise outline about the ${keywords} topic, only write the outline right now do not write the article.  Outline should be well structured article with h2 h3 h4 titles, include as much details as possible, such as ${detail}.  Additional details and facts you can use will be in the ${source}, ignore ${source} if it's blank`; 
