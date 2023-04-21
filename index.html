@@ -4,6 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prompt Generator</title>
+  <style>
+    body {
+      background-color: #181818;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    
+    label, input, select, textarea {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #444;
+      color: #f0f0f0;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+  </style>
   <script>
     function generateText() {
       const wordCount = document.getElementsByName('wordcount')[0].value;
@@ -36,7 +67,7 @@
   <h1>Prompt Generator</h1>
   
   <label for="wordcount">Word Count:</label>
-  <input type="number" name="wordcount" id="wordcount">
+  <input type="number" name="wordcount" id="wordcount" value="300">
   
   <label for="articletype">Article Type:</label>
   <select name="articletype" id="articletype">
@@ -45,14 +76,33 @@
     <option value="informational">Informational</option>
     <option value="review">Review</option>
   </select>
-  
-  <label for="keywords">Keywords:</label>
-  <input type="text" name="keywords" id="keywords">
-  
-  <label for="source">Supplemental Information:</label>
-  <textarea name="source" id="source" rows="4" cols="50"></textarea>
+<label for="keywords">Keywords:</label>
+<input type="text" name="keywords" id="keywords">
+ <label for="tone">Tone:</label>
+<select name="tone" id="tone">
+  <option value="SEO Optimized">SEO Optimized (Confident, Knowledgeable, Neutral, and Clear)</option>
+  <option value="Excited">Excited</option>
+  <option value="Professional">Professional</option>
+  <option value="Friendly">Friendly</option>
+  <option value="Formal">Formal</option>
+  <option value="Humorous">Humorous</option>
+  <option value="Casual">Casual</option>
+</select> 
+<label for="pov">Point of View:</label>
+<select name="pov" id="pov">
+  <option value="First Person Singular">First Person Singular (I, me, my, mine)</option>
+  <option value="First Person Plural">First Person Plural (we, us, our, ours)</option>
+  <option value="Second Person">Second Person (you, your, yours)</option>
+  <option value="Third Person">Third Person (he, she, it, they)</option>
+</select>
+  <label for="detail">Details:</label>
+<textarea name="detail" id="detail" rows="4" cols="50">names, places, dates, prices, numbers, custom</textarea>
 
-  <button onclick="generateText()">Generate Text</button>
+ <label for="source">Supplemental Information:</label>
+
+  <textarea name="source" id="source" rows="4" cols="50"></textarea>
+<button onclick="generateText()">Generate Text</button>
+
   <p id="output"></p>
 </body>
 </html>
