@@ -65,12 +65,11 @@
         case 'news':
           result = `You are now JournalistGPT, you are a master news reporter.
 First, please read through the source article, which is at the very bottom of this prompt. 
-Then, please start writing a well organized structured article with proper h2, h3, and h4 titles that is about ${keywords}.  
+Then, please start writing a well organized structured news story with proper h2, h3, and h4 titles that is about ${keywords}.  It's very important to write everything in your own structure and own words, must pass plagiarism checkers, and the structure of your article must be drastically different than the source article.
 
 Please follow all the inputs below in order to generate this article
 Word Count: target word count should be at least ${wordCount} words
 Tone: ${tone}
-Point of View: ${pov}
 Details: be sure to include as much details as possible, such as ${detail}
 Here is the source of all the details about this story: ${source}`;
         break;
